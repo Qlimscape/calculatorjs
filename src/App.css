@@ -1,0 +1,68 @@
+body {
+	background-color: #111111;
+	font-family: 'Share Tech Mono', monospace;
+}
+
+h1 {
+	color: #d4d4d4;
+}
+
+.App {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+
+}
+
+.calculator {
+	width: 420px;
+	height: 690px;
+	border: 1px solid #d4d4d4;
+	border-radius: 5px;
+	display: grid;
+	grid-template: repeat(9, 1fr) / repeat(4, 1fr);
+}
+
+.display {
+	grid-area: 1/1/4/5;
+	color: #d4d4d4;
+	background-color: #1f1f1f;
+	font-family: "Share Tech Mono", monospace;
+}
+
+.buttons {
+	grid-area: 4/1/10/5;
+	display: grid;
+	grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+	gap: 1rem;
+	padding: 1rem;
+	align-content: space-between;
+}
+
+input {
+	text-align: right;
+}
+
+button {
+	font-size: 2rem;
+	border: 1px solid #d4d4d4;
+	font-family: "Share Tech Mono", monospace;
+	color: #d4d4d4;
+	background-color: #1f1f1f;
+	border-radius: 15px;
+	width: 100%;
+	height: 100%;
+}
+
+button:hover {
+	background-color: #2f2f2f;
+}
+
+button:active {
+	background-color: #0f0f0f;
+}
