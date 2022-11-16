@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Button from "./Button"
+import calculate from "./calculate"
 
 export default function Calculator() {
 
@@ -53,8 +54,8 @@ export default function Calculator() {
 		}
 	}, [operation.length])
 
-	const handleKeys = (e) => {
-		let key = e.key
+	const handleKeys = (key) => {
+
 		if (key === "Backspace") {
 			removeFromOperation()
 		}
@@ -73,43 +74,59 @@ export default function Calculator() {
 		if (key === "(" || key === ")") {
 			paranthesis(key)
 		}
+		if (key === "Enter") {
+			handleCalculate()
+		}
+
+	}
+
+
+	function handleCalculate() {
+		calculate(operation)
 	}
 
 
 
 	return (
-		<div className="calculator" tabIndex={"-1"} onKeyDown={(e) => handleKeys(e)}>
-			<input 
-				type="textarea" 
-				className="display" 
-				value={operation}
-				onKeyDown={(e) => handleKeys(e)}
-				readOnly
-				style={{fontSize: displaySize}}
-			/>
-			<div className="buttons">
-				<Button value="AC" handleClick={() => resetOperation()}/>
-				<Button value="()" handleClick={() => paranthesis() }/>
-				<Button value="s" handleClick={(value) => addToOperation(value)} />
-				<Button value="/" handleClick={(value) => addToOperation(value)} />
-				<Button value="7" handleClick={(value) => addToOperation(value)} />
-				<Button value="8" handleClick={(value) => addToOperation(value)} />
-				<Button value="9" handleClick={(value) => addToOperation(value)} />
-				<Button value="x" handleClick={(value) => addToOperation(value)} />
-				<Button value="4" handleClick={(value) => addToOperation(value)} />
-				<Button value="5" handleClick={(value) => addToOperation(value)} />
-				<Button value="6" handleClick={(value) => addToOperation(value)} />
-				<Button value="-" handleClick={(value) => addToOperation(value)} />
-				<Button value="1" handleClick={(value) => addToOperation(value)} />
-				<Button value="2" handleClick={(value) => addToOperation(value)} />
-				<Button value="3" handleClick={(value) => addToOperation(value)} />
-				<Button value="+" handleClick={(value) => addToOperation(value)} />
-				<Button value="0" handleClick={(value) => addToOperation(value)} />
-				<Button value="." handleClick={(value) => addToOperation(value)} />
-				<Button value="<" handleClick={() => removeFromOperation()} />
-				<Button value="="/>
+		<div className="mainapp" tabIndex={"-1"} onKeyDown={(e) => handleKeys(e.key)}>
+			<div>
+				<h1>
+					Calculator
+				</h1>
 			</div>
+			<div className="calculator">
+				<input 
+					type="textarea" 
+					className="display" 
+					value={operation}
+					onKeyDown={(e) => handleKeys(e)}
+					readOnly
+					style={{fontSize: displaySize}}
+				/>
+				<div className="buttons">
+					<Button value="AC" handleClick={() => resetOperation()}/>
+					<Button value="()" handleClick={() => paranthesis() }/>
+					<Button value="s" handleClick={(value) => addToOperation(value)} />
+					<Button value="/" handleClick={(value) => addToOperation(value)} />
+					<Button value="7" handleClick={(value) => addToOperation(value)} />
+					<Button value="8" handleClick={(value) => addToOperation(value)} />
+					<Button value="9" handleClick={(value) => addToOperation(value)} />
+					<Button value="x" handleClick={(value) => addToOperation(value)} />
+					<Button value="4" handleClick={(value) => addToOperation(value)} />
+					<Button value="5" handleClick={(value) => addToOperation(value)} />
+					<Button value="6" handleClick={(value) => addToOperation(value)} />
+					<Button value="-" handleClick={(value) => addToOperation(value)} />
+					<Button value="1" handleClick={(value) => addToOperation(value)} />
+					<Button value="2" handleClick={(value) => addToOperation(value)} />
+					<Button value="3" handleClick={(value) => addToOperation(value)} />
+					<Button value="+" handleClick={(value) => addToOperation(value)} />
+					<Button value="0" handleClick={(value) => addToOperation(value)} />
+					<Button value="." handleClick={(value) => addToOperation(value)} />
+					<Button value="<" handleClick={() => removeFromOperation()} />
+					<Button value="=" handleClick={() => handleCalculate()} />
+				</div>
 
+			</div>
 		</div>
 	)
 }
