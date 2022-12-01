@@ -16,3 +16,7 @@ function parse(operation) {
 
 	return operationList;
 }
+
+function calculateBasic(operationList) {
+	
+}
